@@ -2,7 +2,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=ruvchain
 PKG_VERSION:=0.5.12
-PKG_RELEASE:=5
+PKG_RELEASE:=1
 
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE).tar.gz
