@@ -10,8 +10,9 @@ PKG_SOURCE_URL:=https://codeload.github.com/ruvcoindev/ruvchain/tar.gz/v$(PKG_VE
 PKG_HASH:=606d9755a3062c9f3435607f697c2df7586d7c1e66e80150914195af6814fa62
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
-# Исправленный путь к golang-package.mk
-include $(TOPDIR)../../lang/golang/golang-package.mk
+include $(INCLUDE_DIR)/package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
+
 
 PKG_MAINTAINER:=ruvcoindev <admin@ruvcha.in>
 PKG_LICENSE:=LGPL-3.0-only
