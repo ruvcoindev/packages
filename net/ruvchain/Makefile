@@ -5,8 +5,8 @@ PKG_VERSION:=0.5.12
 PKG_RELEASE:=1
 
 
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION)-$(PKG_RELEASE).tar.gz
-PKG_SOURCE_URL:=https://github.com/ruvcoindev/ruvchain/archive/refs/tags/v$(PKG_VERSION)-$(PKG-RELEASE)?
+PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
+PKG_SOURCE_URL:=https://github.com/ruvcoindev/ruvchain/archive/v$(PKG_VERSION)?
 PKG_HASH:=ff704c7a11934ddc90e5446ab0989ca417ce27cdfad75809895c9e427fc4b835
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
