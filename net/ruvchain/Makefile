@@ -56,7 +56,18 @@ define Package/ruvchain/install
     $(1)/lib/netifd/proto \
     $(1)/usr/sbin
 
-  
+  $(INSTALL_BIN) \
+		$(GO_PKG_BUILD_BIN_DIR)/ruvchain \
+		$(1)/usr/sbin
+
+	$(INSTALL_BIN) \
+		$(GO_PKG_BUILD_BIN_DIR)/ruvchainctl \
+		$(1)/usr/sbin
+
+	$(INSTALL_BIN) \
+		./files/ruvchain.sh \
+		$(1)/lib/netifd/proto
+endef
 
 $(eval $(call GoBinPackage,ruvchain))
 $(eval $(call BuildPackage,ruvchain))
