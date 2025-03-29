@@ -68,6 +68,5 @@ define Package/ruvchain/install
 		./files/ruvchain.sh \
 		$(1)/lib/netifd/proto
 endef
-
 $(eval $(call GoBinPackage,ruvchain))
 $(eval $(call BuildPackage,ruvchain))
