@@ -51,17 +51,18 @@ Advanced back-pressure routing techniques enable sophisticated link aggregation 
 As a result, a single stream can utilize multiple network interfaces concurrently, significantly enhancing throughput.
 endef
 
-define Package/ruvchain/install
-  $(INSTALL_DIR) \
-    $(1)/lib/netifd/proto \
-    $(1)/usr/sbin
+define Build/Compile
+	$(call GoPackage/Build/Compile)
+	$(STAGING_DIR_HOST)/bin/ruvchain build -o $(PKG_BUILD_DIR)/ruvchain
+endef  # <- Ключевой момент: табуляция перед командами
 
-  $(INSTALL_BIN) \
-		$(GO_PKG_BUILD_BIN_DIR)/ruvchain \
-		$(1)/usr/sbin
+define Package/ruvchain/install
+	$(INSTALL_DIR) \
+		$(1)/usr/sbin \
+		$(1)/lib/netifd/proto
 
 	$(INSTALL_BIN) \
-		$(GO_PKG_BUILD_BIN_DIR)/ruvchainctl \
+		$(GO_PKG_BUILD_BIN_DIR)/ruvchain \
 		$(1)/usr/sbin
 
 	$(INSTALL_BIN) \
