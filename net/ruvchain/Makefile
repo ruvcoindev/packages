@@ -52,21 +52,21 @@ As a result, a single stream can utilize multiple network interfaces concurrentl
 endef
 
 define Package/ruvchain/install
-	$(INSTALL_DIR) \
-		$(1)/lib/netifd/proto \
-		$(1)/usr/sbin
+  $(INSTALL_DIR) \
+    $(1)/lib/netifd/proto \
+    $(1)/usr/sbin
 
-	$(INSTALL_BIN) \
-		$(GO_PKG_BUILD_BIN_DIR)/ruvchain \
-		$(1)/usr/sbin
+  $(if $(wildcard $(GO_PKG_BUILD_BIN_DIR)/ruvchain), \
+    $(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/ruvchain $(1)/usr/sbin, \
+    $(error ruvchain binary not found!))
 
-	$(INSTALL_BIN) \
-		$(GO_PKG_BUILD_BIN_DIR)/ruvchainctl \
-		$(1)/usr/sbin
+  $(if $(wildcard $(GO_PKG_BUILD_BIN_DIR)/ruvchainctl), \
+    $(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/ruvchainctl $(1)/usr/sbin, \
+    $(error ruvchainctl binary not found!))
 
-	$(INSTALL_BIN) \
-		./files/ruvchain.sh \
-		$(1)/lib/netifd/proto
+  $(if $(wildcard ./files/ruvchain.sh), \
+    $(INSTALL_BIN) ./files/ruvchain.sh $(1)/lib/netifd/proto, \
+    $(error ruvchain.sh script not found!))
 endef
 
 $(eval $(call GoBinPackage,ruvchain))
