@@ -1,13 +1,14 @@
 include $(TOPDIR)/rules.mk
 
+
 PKG_NAME:=ruvchain
 PKG_VERSION:=0.5.12
 PKG_RELEASE:=1
 
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=https://github.com/ruvcoindev/ruvchain/archive/v$(PKG_VERSION)?
-PKG_HASH:=ff704c7a11934ddc90e5446ab0989ca417ce27cdfad75809895c9e427fc4b835
+PKG_SOURCE_URL:=https://codeload.github.com/ruvcoindev/ruvchain/tar.gz/v$(PKG_VERSION)?
+PKG_HASH:=e60462c173b458b5d3955b87553d9ae5f1e298e265e15cfb53a07ac8b574fcc4
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
@@ -18,7 +19,6 @@ PKG_MAINTAINER:=ruvcoindev <admin@ruvcha.in>
 PKG_LICENSE:=LGPL-3.0-only
 PKG_LICENSE_FILES:=LICENSE
 
-GO_PKG:=github.com/ruvcoindev/ruvchain
 GO_PKG_BUILD_PKG:=github.com/ruvcoindev/ruvchain/cmd/...
 
 PKG_BUILD_DEPENDS:=golang/host
@@ -41,7 +41,7 @@ define Package/ruvchain
 	SUBMENU:=Routing and Redirection
 	TITLE:=Ruvchain supports end-to-end encrypted IPv6 networks
 	URL:=https://ruvcha.in
-	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun +libstdcpp
+	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun +libstdcpp +libopenssl 
 endef
 
 define Package/ruvchain/description
