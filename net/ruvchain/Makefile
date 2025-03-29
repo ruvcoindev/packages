@@ -41,7 +41,7 @@ define Package/ruvchain
 	SUBMENU:=Routing and Redirection
 	TITLE:=Ruvchain supports end-to-end encrypted IPv6 networks
 	URL:=https://ruvcha.in
-	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun +libstdcpp +libopenssl 
+	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun 
 endef
 
 define Package/ruvchain/description
