@@ -56,18 +56,7 @@ define Package/ruvchain/install
     $(1)/lib/netifd/proto \
     $(1)/usr/sbin
 
-  $(if $(wildcard $(GO_PKG_BUILD_BIN_DIR)/ruvchain), \
-    $(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/ruvchain $(1)/usr/sbin, \
-    $(error ruvchain binary not found!))
-
-  $(if $(wildcard $(GO_PKG_BUILD_BIN_DIR)/ruvchainctl), \
-    $(INSTALL_BIN) $(GO_PKG_BUILD_BIN_DIR)/ruvchainctl $(1)/usr/sbin, \
-    $(error ruvchainctl binary not found!))
-
-  $(if $(wildcard ./files/ruvchain.sh), \
-    $(INSTALL_BIN) ./files/ruvchain.sh $(1)/lib/netifd/proto, \
-    $(error ruvchain.sh script not found!))
-endef
+  
 
 $(eval $(call GoBinPackage,ruvchain))
 $(eval $(call BuildPackage,ruvchain))
