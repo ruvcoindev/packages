@@ -8,7 +8,7 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/ruvcoindev/ruvchain/tar.gz/v$(PKG_VERSION)?
-PKG_HASH:=e60462c173b458b5d3955b87553d9ae5f1e298e265e15cfb53a07ac8b574fcc4
+PKG_HASH:=edf0286bf069d7f9762d77e1fcf3e98868e25b86b991589e980c1c9be7f01bbe
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
