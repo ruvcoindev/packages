@@ -7,9 +7,9 @@ PKG_RELEASE:=1
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/ruvcoindev/ruvchain/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=edf0286bf069d7f9762d77e1fcf3e98868e25b86b991589e980c1c9be7f01bbe
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-go-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
-PKG_MAINTAINER:=William Fleurant <admin@ruvcha.in>
+PKG_MAINTAINER:= ruvcoindev <admin@ruvcha.in>
 PKG_LICENSE:=LGPL-3.0-only
 PKG_LICENSE_FILES:=LICENSE
 
