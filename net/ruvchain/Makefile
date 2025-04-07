@@ -12,7 +12,7 @@ PKG_HASH:=edf0286bf069d7f9762d77e1fcf3e98868e25b86b991589e980c1c9be7f01bbe
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
 
 include $(INCLUDE_DIR)/package.mk
-include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
+include ../../lang/golang/golang-package.mk
 
 
 PKG_MAINTAINER:=ruvcoindev <admin@ruvcha.in>
