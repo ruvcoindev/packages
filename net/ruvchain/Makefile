@@ -1,25 +1,17 @@
 include $(TOPDIR)/rules.mk
 
-
 PKG_NAME:=ruvchain
 PKG_VERSION:=0.5.12
 PKG_RELEASE:=1
 
-
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://codeload.github.com/ruvcoindev/ruvchain/tar.gz/v$(PKG_VERSION)?
 PKG_HASH:=edf0286bf069d7f9762d77e1fcf3e98868e25b86b991589e980c1c9be7f01bbe
-PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)
+PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)-go-$(PKG_VERSION)
 
-include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
-
-
-PKG_MAINTAINER:=ruvcoindev <admin@ruvcha.in>
+PKG_MAINTAINER:=William Fleurant <admin@ruvcha.in>
 PKG_LICENSE:=LGPL-3.0-only
 PKG_LICENSE_FILES:=LICENSE
-
-GO_PKG_BUILD_PKG:=github.com/ruvcoindev/ruvchain/cmd/...
 
 PKG_BUILD_DEPENDS:=golang/host
 PKG_BUILD_PARALLEL:=1
@@ -32,7 +24,8 @@ GO_PKG_LDFLAGS_X:= \
   github.com/ruvcoindev/ruvchain/src/version.buildName=ruvchain-openwrt \
   github.com/ruvcoindev/ruvchain/src/version.buildVersion=$(PKG_VERSION)
 
-
+include $(INCLUDE_DIR)/package.mk
+include ../../lang/golang/golang-package.mk
 
 define Package/ruvchain
 	SECTION:=net
@@ -40,28 +33,24 @@ define Package/ruvchain
 	SUBMENU:=Routing and Redirection
 	TITLE:=Ruvchain supports end-to-end encrypted IPv6 networks
 	URL:=https://ruvcha.in
-	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun 
+	DEPENDS:=$(GO_ARCH_DEPENDS) @IPV6 +kmod-tun
 endef
 
 define Package/ruvchain/description
- Ruvchain creates fully encrypted IPv6 networks.
-Unlike cjdns, it employs a unique routing algorithm. This globally coordinated spanning tree uses greedy routing within a metric space.
-Advanced back-pressure routing techniques enable sophisticated link aggregation for each stream. 
-As a result, a single stream can utilize multiple network interfaces concurrently, significantly enhancing throughput.
+ Ruvchain builds end-to-end encrypted networks with IPv6.
 endef
-
-define Build/Compile
-	$(call GoPackage/Build/Compile)
-	$(STAGING_DIR_HOST)/bin/ruvchain build -o $(PKG_BUILD_DIR)/ruvchain
-endef  # <- Ключевой момент: табуляция перед командами
 
 define Package/ruvchain/install
 	$(INSTALL_DIR) \
-		$(1)/usr/sbin \
-		$(1)/lib/netifd/proto
+		$(1)/lib/netifd/proto \
+		$(1)/usr/sbin
 
 	$(INSTALL_BIN) \
 		$(GO_PKG_BUILD_BIN_DIR)/ruvchain \
+		$(1)/usr/sbin
+
+	$(INSTALL_BIN) \
+		$(GO_PKG_BUILD_BIN_DIR)/ruvchainctl \
 		$(1)/usr/sbin
 
 	$(INSTALL_BIN) \
